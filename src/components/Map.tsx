@@ -1,15 +1,15 @@
 import type { Place } from "../api/Place";
 import "leaflet/dist/leaflet.css";
-import type { Map as LeafletMap } from "leaflet"; // Displays maps
+import type { Map as LeafletMap } from "leaflet";
 import { useEffect, useRef } from "react";
-import { TileLayer, MapContainer, Marker } from "react-leaflet"; // Compatibility layer between leaflet and react
+import { TileLayer, MapContainer, Marker } from "react-leaflet";
 
 interface MapProps {
   place: Place | null;
 }
 
 export default function Map({ place }: MapProps) {
-  const mapRef = useRef<LeafletMap | null>(null); // Generic
+  const mapRef = useRef<LeafletMap | null>(null);
   useEffect(() => {
     if (mapRef.current && place) {
       mapRef.current.flyTo([place.latitude, place.longitude]);
